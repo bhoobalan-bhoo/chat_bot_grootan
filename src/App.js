@@ -1,68 +1,28 @@
+import "./App.css";
+// importing components from react-router-dom package
+import {
+BrowserRouter as Router,
+Routes,
+Route,
+} from "react-router-dom";
 
-import React from 'react';
-import ChatBot from 'react-simple-chatbot';
-import {Segment} from "semantic-ui-react";
+import Home from "./Home";
+import Chat from "./Chat";
 
 function App() {
-  const steps = [
-    {
-      id: "Greet",
-      message: "Hi, I am here to help you",
-      trigger: "Done",
-    },
-    {
-      id: "Done",
-      message: "Please enter your name!",
-      trigger: "waiting1",
-    },
-    {
-      id: "waiting1",
-      user: true,
-      trigger: "Name",
-    },
-    {
-      id: "Name",
-      message: "Hi {previousValue}, Do you really want to return",
-      trigger: "issues",
-    },
-    {
-      id: "issues",
-      options: [
-        {
-          value: "Yes",
-          label: "yes",
-          trigger: "Yes",
-        },
-        { value: "No", label: "No", trigger: "No" },
-      ],
-    },
-    {
-      id: "Yes",
-      message:
-        "Order return is successful",
-      end: true,
-    },
-    {
-      id: "No",
-      message:
-        "Order return is unsuccessful",
-      end: true,
-    }
-  ];
-
-
-
-
-
-
-  return (
-    <>
-    <Segment floated="right">
-      <ChatBot steps={steps}/>
-    </Segment>
-    </>
-  );
-    
+return (
+	<>
+	{/* This is the alias of BrowserRouter i.e. Router */}
+	<Router>
+		<Routes>
+    {/* <Route element={<Chat />}> */}
+		<Route path="/home" element={<Home />} />
+		<Route path="/chat" element={<Chat />} />
+		
+		</Routes >
+	</Router>
+	</>
+);
 }
 
 export default App;
